@@ -60,7 +60,6 @@ public class Managers : MonoBehaviour
             s_instance._pool.Init();
             s_instance._ui.Init();
             s_instance._scene.Init();
-            
         }
     }
 
