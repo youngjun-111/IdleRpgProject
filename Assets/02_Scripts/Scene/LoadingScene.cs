@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class LoadingScene : BaseScene
 {
+    //비동기 로딩 씬 : 데이터 로드 및 적용
+
     public Slider _loadingBar;
 
     public TextMeshProUGUI _loadingTxt;
@@ -16,7 +18,7 @@ public class LoadingScene : BaseScene
 
     Animator _fadeAnim;
 
-    public void Start()
+    private void Start()
     {
         _fadeAnim = GameObject.FindWithTag("SceneManager").GetComponent<Animator>();
         StartCoroutine(GoNextScene(Managers.Scene._targetScene));
@@ -55,9 +57,8 @@ public class LoadingScene : BaseScene
             yield return null;
         }
     }
+
     public override void Clear()
     {
-
     }
-
 }

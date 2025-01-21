@@ -7,9 +7,10 @@ public class TitleCanvasUI : BaseUI
     enum Buttons
     {
         StartBtn,
+        QuitBtn,
     }
 
-    public void Awake()
+    private void Awake()
     {
         Bind<Button>(typeof(Buttons));
     }
@@ -20,12 +21,30 @@ public class TitleCanvasUI : BaseUI
         {
             OnClickStartBtn();
         });
+        GetButton((int)Buttons.QuitBtn).onClick.AddListener(() =>
+        {
+            OnApplicationQuit();
+        });
     }
 
+    protected virtual void OnDisable()
+    {
+        GetButton((int)Buttons.StartBtn).onClick.RemoveAllListeners();
+        GetButton((int)Buttons.QuitBtn).onClick.RemoveAllListeners();
+    }
     void OnClickStartBtn()
     {
         Managers.UI.CloseUI(this);
 
         Managers.Scene.LoadScene(Define.Scene.Loading);
+    }
+
+    private void OnApplicationQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

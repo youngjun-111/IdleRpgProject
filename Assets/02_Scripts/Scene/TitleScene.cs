@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TitleScene : BaseScene
 {
+    private void Start()
+    {
+        OpenTitle();
+    }
+
     public override void Clear()
     {
         
