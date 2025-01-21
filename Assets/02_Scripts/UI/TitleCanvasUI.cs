@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,15 @@ public class TitleCanvasUI : BaseUI
         Bind<Button>(typeof(Buttons));
     }
 
-    public void OnClickStartBtn()
+    protected virtual void OnEnable()
+    {
+        GetButton((int)Buttons.StartBtn).onClick.AddListener(()=>
+        {
+            OnClickStartBtn();
+        });
+    }
+
+    void OnClickStartBtn()
     {
         Managers.UI.CloseUI(this);
 

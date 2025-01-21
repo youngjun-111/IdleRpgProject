@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 4839869789356030280}
   - component: {fileID: 5253973893924019913}
   - component: {fileID: 6982829214583370945}
+  - component: {fileID: 2274013630476939544}
   m_Layer: 5
   m_Name: TitleCanvasUI
   m_TagString: Untagged
@@ -222,3 +223,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2274013630476939544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567937436393268996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5055c56c6b1ae5b4fa6ae68b2a1ba156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitBtn: {fileID: 0}
+  _isSort: 1
+  _btnCount: 0

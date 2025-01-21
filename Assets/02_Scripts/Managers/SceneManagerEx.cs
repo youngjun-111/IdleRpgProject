@@ -12,7 +12,7 @@ public class SceneManagerEx
     // 현재 씬 반환하는 메서드
     public BaseScene CurrentScene
     {
-        get { return GameObject.FindObjectOfType<BaseScene>(); }
+        get { return GameObject.FindFirstObjectByType<BaseScene>(); }
     }
 
     // OnSceneLoaded를 이벤트에 등록

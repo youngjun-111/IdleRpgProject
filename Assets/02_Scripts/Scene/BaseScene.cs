@@ -13,7 +13,7 @@ public abstract class BaseScene : MonoBehaviour
     protected virtual void Init()
     {
         // 타입으로 오브젝트를 찾고
-        Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
+        Object obj = Object.FindFirstObjectByType<EventSystem>();
 
         // 없으면 생성
         if (obj == null)
