@@ -65,45 +65,7 @@ public class Util
         return component;
     }
 
-    public static bool ChackFOV(Transform player, Transform target, int angle, int radius)
-    {
 
-        // 시야각이 90도일 때, 45도
-        Vector3 rightDir = AngleToDir(angle * 0.5f);
-        
-        // 시야각이 90도일 때, -45도
-        Vector3 leftDir = AngleToDir(angle * -1 * 0.5f);
-
-        // 연산을 빠르게 처리하기 위해 제곱된 값을 구한다.
-        float sqrDistance = Vector3.SqrMagnitude(target.position - player.position);
-        if (sqrDistance < radius * radius &&
-            GetAngle(player.position, target.position) < angle * 0.5f)
-        {
-            return true;
-        }
-        else { return false; }
-    }
-
-    static Vector3 AngleToDir(float angle)
-    {
-        // UnityEngine.Mathf 의 Sin, Cos 에 들어가는 파라미터 값은 라디안이다.
-        // 그러므로, 라디안으로 바꿔줘야 한다. 
-        float rad = angle * Mathf.Deg2Rad;
-        return new Vector3(Mathf.Sin(rad), 0, Mathf.Cos(rad));
-    }
-
-    static float GetAngle(Vector3 origin, Vector3 target)
-    {
-        Vector3 direction = target.normalized - origin.normalized;
-
-        /**
-         * z가 전방이기 때문에
-         * y 파라미터 : x
-         * x 파라미터 : z
-         * 값이 들어간다.
-         */
-        return Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-    }
     public static void BindUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
     {
         UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
