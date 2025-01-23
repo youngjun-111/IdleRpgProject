@@ -1,5 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public enum PlayerState
 {
@@ -12,7 +14,9 @@ public enum PlayerState
 
 public class Player : MonoBehaviour, IDamageable
 {
-    public PlayerState _pState;
+    public PlayerState _curState;
+
+    FSM _pFsm;
 
     //컴포넌트
     [HideInInspector]
@@ -20,23 +24,33 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        _pState = PlayerState.Idle;
+        _curState = PlayerState.Idle;
+
+        _pFsm = new FSM(new PlayerIdleState(this));
+
         _cc = gameObject.GetOrAddComponent<CharacterController>();
     }
 
+    protected virtual void ChangeState()
+    {
+        switch (_curState)
+        {
+            case PlayerState.Idle:
 
-
+                break;
+            case PlayerState.Move:
+                break;
+            case PlayerState.Attack:
+                break;
+            case PlayerState.Hit:
+                break;
+            case PlayerState.Die:
+                break;
+        }
+    }
 
     public void Damaged(int amount)
     {
-        //공격 및 맞는중이면 리턴
-        if (_pState == PlayerState.Attack) { return; } else if (_pState == PlayerState.Hit) { return; }
 
-        _pState = PlayerState.Hit;
-
-        if (amount <= 0)
-        {
-            _pState = PlayerState.Die;
-        }
     }
 }

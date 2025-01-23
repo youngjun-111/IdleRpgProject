@@ -15,6 +15,6 @@ public abstract class BaseState
     public abstract void OnStateUpdate();
     //상태 탈출
     public abstract void OnStateExit();
-    //상태 초기화
+
     public virtual void OnStateFixedUpdate() { }
 }

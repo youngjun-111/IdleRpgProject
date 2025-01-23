@@ -9,7 +9,7 @@ public class MainScene : BaseScene
 
     public void OpenMainUI()
     {
-        //Managers.UI.GetActiveUI<MainUI>
+        var mainUI = Managers.UI.GetActiveUI<MainUI>();
     }
 
 }

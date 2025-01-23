@@ -18,6 +18,8 @@ public class LoadingScene : BaseScene
 
     Animator _fadeAnim;
 
+    public Player _player;
+
     private void Start()
     {
         _fadeAnim = GameObject.FindWithTag("SceneManager").GetComponent<Animator>();
@@ -56,6 +58,11 @@ public class LoadingScene : BaseScene
             }
             yield return null;
         }
+    }
+
+    void CreatePlayer()
+    {
+
     }
 
     public override void Clear()
